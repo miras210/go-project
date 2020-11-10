@@ -4,6 +4,7 @@ type Game struct {
 	difficulty Difficulty
 	player     interface{}   //Player
 	enemies    []interface{} //[]Enemy
+	loots      []interface{} //[]Loot
 	display    []interface{} //[]Display
 	gameMap    interface{}   //GameMap
 }

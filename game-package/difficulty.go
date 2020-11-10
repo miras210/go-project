@@ -42,36 +42,36 @@ func (e *EasyDifficulty) getNewGameMap() interface{} {
 
 type MediumDifficulty struct{}
 
-func (m MediumDifficulty) getNewPlayer(playerName string) interface{} {
+func (m *MediumDifficulty) getNewPlayer(playerName string) interface{} {
 	panic("implement me")
 }
 
-func (m MediumDifficulty) getNewEnemies() []interface{} {
+func (m *MediumDifficulty) getNewEnemies() []interface{} {
 	panic("implement me")
 }
 
-func (m MediumDifficulty) getNewLoots() []interface{} {
+func (m *MediumDifficulty) getNewLoots() []interface{} {
 	panic("implement me")
 }
 
-func (m MediumDifficulty) getNewGameMap() interface{} {
+func (m *MediumDifficulty) getNewGameMap() interface{} {
 	panic("implement me")
 }
 
 type HardDifficulty struct{}
 
-func (h HardDifficulty) getNewPlayer(playerName string) interface{} {
+func (h *HardDifficulty) getNewPlayer(playerName string) interface{} {
 	panic("implement me")
 }
 
-func (h HardDifficulty) getNewEnemies() []interface{} {
+func (h *HardDifficulty) getNewEnemies() []interface{} {
 	panic("implement me")
 }
 
-func (h HardDifficulty) getNewLoots() []interface{} {
+func (h *HardDifficulty) getNewLoots() []interface{} {
 	panic("implement me")
 }
 
-func (h HardDifficulty) getNewGameMap() interface{} {
+func (h *HardDifficulty) getNewGameMap() interface{} {
 	panic("implement me")
 }
