@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06972248-85c2-4192-ad0a-590c11dad603" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game-package/difficulty.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game-package/game.go" afterDir="false" />
+    <list default="true" id="06972248-85c2-4192-ad0a-590c11dad603" name="Default Changelist" comment="added: basic game difficulty strategy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +54,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -72,6 +76,7 @@
       <filePath value="$PROJECT_DIR$" />
       <package value="golang-project" />
       <directory value="$PROJECT_DIR$" />
+      <output_directory value="$USER_HOME$/Desktop" />
       <method v="2" />
     </configuration>
   </component>
@@ -90,14 +95,42 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added: basic game difficulty strategy" />
+    <option name="LAST_COMMIT_MESSAGE" value="added: basic game difficulty strategy" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605011913192">
+    <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605015693911">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605011913192" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1605011897457">
+    <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605015693911" />
+    <state x="548" y="179" key="FileChooserDialogImpl" timestamp="1605015668164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605011897457" />
+    <state x="548" y="179" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605015668164" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1605016346723">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605016346723" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1605016346723">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605016346723" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1605016346722">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605016346722" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1605016346723">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605016346723" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1605015656962">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605015656962" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605014179310">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605014179310" />
   </component>
 </project>
