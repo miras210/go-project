@@ -1,12 +1,13 @@
 package game_package
 
 type Game struct {
-	difficulty Difficulty
-	player     CharacterI    //Player
-	enemies    []CharacterI  //[]Enemy
-	loots      []interface{} //[]Loot
-	display    []interface{} //[]Display
-	gameMap    interface{}   //GameMap
+	difficulty  Difficulty
+	player      *Player                     //Player
+	enemies     []CharacterI                //[]Enemy
+	loots       []Loot                      //[]Loot
+	display     []interface{}               //[]Display
+	gameMap     *Map                        //GameMap
+	coordinates map[interface{}]*Coordinate //directAccess to the coordinates of object (for movement, attack)
 }
 
 // The only two Public functions are below
@@ -19,30 +20,41 @@ func NewGame(playerName, difficulty string) *Game {
 	game.player = diff.getNewPlayer(playerName)
 	game.enemies = diff.getNewEnemies()
 	game.loots = diff.getNewLoots()
+	//TODO insertion of the objects to the gameMap and coordinates
 	game.difficulty = diff
 	return game
 }
 
-func (g *Game) StartGame() {
+func (g *Game) StartGame() string {
 	move, attack, loot := &MoveAction{}, &AttackAction{}, &LootAction{}
 	var result string
 	for {
 		var input string = "" //TODO implement get Input
-		//player makes move
-		//move in map
-		//attack
-		//defense
-		//status (maybe shows stats of everything on the map?)
-		//skip = g.Player.SetStamina(0)
-		//player ends move
+		var isValid bool = true
+		switch input {
+		case "move":
+			move.visitForPlayer(g.player)
+		case "attack":
+			attack.visitForPlayer(g.player)
+		case "loot":
+			loot.visitForPlayer(g.player)
+		case "skip":
+			g.player.SetStamina(0)
+		default:
+			isValid = false
+		}
+		if !isValid {
+			break
+		}
 		if g.player.GetStamina() > 0 {
 			break
 		}
 		//enemy take turn
 		for _, enemy := range g.enemies {
-			attack.visitForEnemy(&enemy)
-			move.visitForEnemy(&enemy)
+			attack.visitForEnemy(enemy)
+			move.visitForEnemy(enemy)
 		}
+		g.player.SetStamina(g.player.GetMaxStamina())
 		if g.player.GetHealth() <= 0 {
 			result = "lose"
 			break
@@ -52,6 +64,7 @@ func (g *Game) StartGame() {
 			break
 		}
 	}
+	return result
 }
 
 // ***************************************

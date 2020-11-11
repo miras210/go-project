@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	g "golang-project/game-package"
+	g "go-project/game-package"
 )
 
 func main() {
@@ -15,5 +15,6 @@ func main() {
 	fmt.Println("If you come here, do you wanna play hard with me ? Choose [easy, medium, hard]")
 	_, _ = fmt.Scanln(&difficulty)
 	myGame := g.NewGame(playerName, difficulty)
-	myGame.StartGame()
+	res := myGame.StartGame()
+	fmt.Println(res)
 }

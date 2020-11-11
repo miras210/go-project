@@ -22,11 +22,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06972248-85c2-4192-ad0a-590c11dad603" name="Default Changelist" comment="modified: game.go, difficulty.go">
+    <list default="true" id="06972248-85c2-4192-ad0a-590c11dad603" name="Default Changelist" comment="changed: decorators concept&#10;modified: difficulty.go, character.go">
+      <change afterPath="$PROJECT_DIR$/game-package/enemy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game-package/factory.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game-package/loot.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game-package/map.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game-package/player.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game-package/randomInt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-package/action.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/action.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game-package/character.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/character.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game-package/difficulty.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/difficulty.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game-package/elementalDecorator.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/elementalDecorator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-package/elementalDecorator.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/abilityDecorator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-package/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/game.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +77,7 @@
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../week6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../golang-project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -113,17 +122,18 @@
     <MESSAGE value="modified: game.go" />
     <MESSAGE value="modified: game.go, character.go, elementalDecorator.go, action.go" />
     <MESSAGE value="modified: game.go, difficulty.go" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified: game.go, difficulty.go" />
+    <MESSAGE value="changed: decorators concept&#10;modified: difficulty.go, character.go" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed: decorators concept&#10;modified: difficulty.go, character.go" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605015693911">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605015693911" />
-    <state x="548" y="179" key="FileChooserDialogImpl" timestamp="1605106500583">
+    <state x="548" y="179" key="FileChooserDialogImpl" timestamp="1605115179733">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="179" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605106500583" />
+    <state x="548" y="179" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605115179733" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1605017149829">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -144,9 +154,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605015656962" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605110855772">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605112190983">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605110855772" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605112190983" />
   </component>
 </project>

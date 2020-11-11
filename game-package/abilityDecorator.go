@@ -26,12 +26,6 @@ func (e *AbilityDecorator) GetMaxStamina() int {
 func (e *AbilityDecorator) SetHealth(health int) {
 	e.character.SetHealth(health)
 }
-func (e *AbilityDecorator) GetPlayerName() string {
-	return e.character.GetPlayerName()
-}
-func (e *AbilityDecorator) SetPlayerName(playerName string) {
-	e.character.SetPlayerName(playerName)
-}
 
 //Decorators
 type SharpDecorator struct {

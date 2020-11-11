@@ -2,8 +2,6 @@ package game_package
 
 //CharacterI
 type CharacterI interface {
-	GetPlayerName() string
-	SetPlayerName(string)
 	GetAttack() int
 	GetDefense() int
 	GetStamina() int
@@ -16,7 +14,6 @@ type CharacterI interface {
 //Character
 type Character struct {
 	health, attack, defense, stamina, maxStamina int
-	playerName                                   string
 }
 
 func (c *Character) GetAttack() int {
@@ -39,10 +36,4 @@ func (c *Character) GetHealth() int {
 }
 func (c *Character) SetHealth(health int) {
 	c.health = health
-}
-func (c *Character) GetPlayerName() string {
-	return c.playerName
-}
-func (c *Character) SetPlayerName(playerName string) {
-	c.playerName = playerName
 }
