@@ -4,7 +4,7 @@ package game_package
 
 type Difficulty interface {
 	getNewPlayer(string) CharacterI // Player struct
-	getNewEnemies() []interface{}   // []Enemy struct
+	getNewEnemies() []CharacterI    // []Enemy struct
 	getNewLoots() []interface{}     // []Loot struct
 	getNewGameMap() interface{}     // GameMap struct
 }
@@ -25,10 +25,16 @@ func newDifficulty(difficulty string) Difficulty {
 type EasyDifficulty struct{}
 
 func (e *EasyDifficulty) getNewPlayer(playerName string) CharacterI {
-	panic("implement me")
+	return &Character{
+		health:     100,
+		attack:     20,
+		defense:    10,
+		stamina:    3,
+		maxStamina: 3,
+	}
 }
 
-func (e *EasyDifficulty) getNewEnemies() []interface{} {
+func (e *EasyDifficulty) getNewEnemies() []CharacterI {
 	panic("implement me")
 }
 
@@ -43,10 +49,16 @@ func (e *EasyDifficulty) getNewGameMap() interface{} {
 type MediumDifficulty struct{}
 
 func (m *MediumDifficulty) getNewPlayer(playerName string) CharacterI {
-	panic("implement me")
+	return &Character{
+		health:     80,
+		attack:     15,
+		defense:    7,
+		stamina:    3,
+		maxStamina: 3,
+	}
 }
 
-func (m *MediumDifficulty) getNewEnemies() []interface{} {
+func (m *MediumDifficulty) getNewEnemies() []CharacterI {
 	panic("implement me")
 }
 
@@ -64,7 +76,7 @@ func (h *HardDifficulty) getNewPlayer(playerName string) CharacterI {
 	panic("implement me")
 }
 
-func (h *HardDifficulty) getNewEnemies() []interface{} {
+func (h *HardDifficulty) getNewEnemies() []CharacterI {
 	panic("implement me")
 }
 

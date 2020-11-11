@@ -1,42 +1,59 @@
 package game_package
 
-//ElementalDecorator
-type ElementalDecorator struct {
+//AbilityDecorator
+type AbilityDecorator struct {
 	character CharacterI
 }
 
-func (e *ElementalDecorator) GetAttack() int {
+func (e *AbilityDecorator) GetAttack() int {
 	return e.character.GetAttack()
 }
-func (e *ElementalDecorator) GetDefense() int {
+func (e *AbilityDecorator) GetDefense() int {
 	return e.character.GetDefense()
 }
-func (e *ElementalDecorator) GetHealth() int {
+func (e *AbilityDecorator) GetHealth() int {
 	return e.character.GetHealth()
 }
-func (e *ElementalDecorator) GetStamina() int {
+func (e *AbilityDecorator) GetStamina() int {
 	return e.character.GetStamina()
 }
-func (e *ElementalDecorator) SetStamina(stamina int) {
+func (e *AbilityDecorator) SetStamina(stamina int) {
 	e.character.SetStamina(stamina)
 }
-func (e *ElementalDecorator) SetHealth(health int) {
+func (e *AbilityDecorator) GetMaxStamina() int {
+	return e.character.GetMaxStamina()
+}
+func (e *AbilityDecorator) SetHealth(health int) {
 	e.character.SetHealth(health)
+}
+func (e *AbilityDecorator) GetPlayerName() string {
+	return e.character.GetPlayerName()
+}
+func (e *AbilityDecorator) SetPlayerName(playerName string) {
+	e.character.SetPlayerName(playerName)
 }
 
 //Decorators
-type FireElemental struct {
-	ElementalDecorator
+type SharpDecorator struct {
+	AbilityDecorator
 }
 
-//TODO implement FireElementalDecorator
-type ElectroElemental struct {
-	ElementalDecorator
+func (s *SharpDecorator) GetAttack() int {
+	return s.character.GetAttack() * 2
 }
 
-//TODO implement ElectroElementalDecorator
-type AnemoElemental struct {
-	ElementalDecorator
+type StoneDecorator struct {
+	AbilityDecorator
 }
 
-//TODO implement AnemoElementalDecorator
+func (s *StoneDecorator) GetDefense() int {
+	return s.character.GetDefense() * 2
+}
+
+type EnduranceDecorator struct {
+	AbilityDecorator
+}
+
+func (e *EnduranceDecorator) GetMaxStamina() int {
+	return e.GetStamina() + 3
+}
