@@ -17,6 +17,9 @@ func (e *ElementalDecorator) GetHealth() int {
 func (e *ElementalDecorator) GetStamina() int {
 	return e.character.GetStamina()
 }
+func (e *ElementalDecorator) SetStamina(stamina int) {
+	e.character.SetStamina(stamina)
+}
 func (e *ElementalDecorator) SetHealth(health int) {
 	e.character.SetHealth(health)
 }

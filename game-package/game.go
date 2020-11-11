@@ -2,7 +2,7 @@ package game_package
 
 type Game struct {
 	difficulty Difficulty
-	player     interface{}   //Player
+	player     CharacterI    //Player
 	enemies    []interface{} //[]Enemy
 	loots      []interface{} //[]Loot
 	display    []interface{} //[]Display
@@ -25,7 +25,17 @@ func NewGame(playerName, difficulty string) *Game {
 
 func (g *Game) StartGame() {
 	for {
-
+		var input string = "" //TODO implement get Input
+		//player makes move
+		//move in map
+		//attack
+		//defense
+		//skip = g.Player.SetStamina(0)
+		//player ends move
+		if g.player.GetStamina() > 0 {
+			break
+		}
+		//enemy take turn
 	}
 }
 

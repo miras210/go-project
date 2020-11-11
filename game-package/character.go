@@ -5,6 +5,7 @@ type CharacterI interface {
 	GetAttack() int
 	GetDefense() int
 	GetStamina() int
+	SetStamina(int)
 	GetHealth() int
 	SetHealth(int)
 }
@@ -22,6 +23,9 @@ func (c *Character) GetDefense() int {
 }
 func (c *Character) GetStamina() int {
 	return c.stamina
+}
+func (c *Character) SetStamina(stamina int) {
+	c.stamina = stamina
 }
 func (c *Character) GetHealth() int {
 	return c.health
