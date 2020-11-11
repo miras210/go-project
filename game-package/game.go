@@ -13,11 +13,20 @@ type Game struct {
 // ***************************************
 func NewGame(playerName, difficulty string) *Game {
 	// TODO Implement game initialization
-	return nil
+	game := &Game{}
+	diff := newDifficulty(difficulty)
+	game.gameMap = diff.getNewGameMap()
+	game.player = diff.getNewPlayer(playerName)
+	game.enemies = diff.getNewEnemies()
+	game.loots = diff.getNewLoots()
+	game.difficulty = diff
+	return game
 }
 
 func (g *Game) StartGame() {
+	for {
 
+	}
 }
 
 // ***************************************
