@@ -3,10 +3,10 @@ package game_package
 // DIFFICULTY STRATEGY
 
 type Difficulty interface {
-	getNewPlayer(string) interface{} // Player struct
-	getNewEnemies() []interface{}    // []Enemy struct
-	getNewLoots() []interface{}      // []Loot struct
-	getNewGameMap() interface{}      // GameMap struct
+	getNewPlayer(string) CharacterI // Player struct
+	getNewEnemies() []interface{}   // []Enemy struct
+	getNewLoots() []interface{}     // []Loot struct
+	getNewGameMap() interface{}     // GameMap struct
 }
 
 func newDifficulty(difficulty string) Difficulty {
@@ -24,7 +24,7 @@ func newDifficulty(difficulty string) Difficulty {
 
 type EasyDifficulty struct{}
 
-func (e *EasyDifficulty) getNewPlayer(playerName string) interface{} {
+func (e *EasyDifficulty) getNewPlayer(playerName string) CharacterI {
 	panic("implement me")
 }
 
@@ -42,7 +42,7 @@ func (e *EasyDifficulty) getNewGameMap() interface{} {
 
 type MediumDifficulty struct{}
 
-func (m *MediumDifficulty) getNewPlayer(playerName string) interface{} {
+func (m *MediumDifficulty) getNewPlayer(playerName string) CharacterI {
 	panic("implement me")
 }
 
@@ -60,7 +60,7 @@ func (m *MediumDifficulty) getNewGameMap() interface{} {
 
 type HardDifficulty struct{}
 
-func (h *HardDifficulty) getNewPlayer(playerName string) interface{} {
+func (h *HardDifficulty) getNewPlayer(playerName string) CharacterI {
 	panic("implement me")
 }
 
