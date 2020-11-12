@@ -5,7 +5,7 @@ type Game struct {
 	player      *Player                     //Player
 	enemies     []CharacterI                //[]Enemy
 	loots       []Loot                      //[]Loot
-	display     []interface{}               //[]Display
+	display     Display                     //[]Display
 	gameMap     *Map                        //GameMap
 	coordinates map[interface{}]*Coordinate //directAccess to the coordinates of object (for movement, attack)
 }
@@ -18,8 +18,11 @@ func NewGame(playerName, difficulty string) *Game {
 	diff := newDifficulty(difficulty)
 	game.gameMap = diff.getNewGameMap()
 	game.player = diff.getNewPlayer(playerName)
+	game.gameMap.setPlayer(*game.player)
 	game.enemies = diff.getNewEnemies()
+	game.gameMap.setEnemies(game.enemies)
 	game.loots = diff.getNewLoots()
+	game.gameMap.setLoots(game.loots)
 	//TODO insertion of the objects to the gameMap and coordinates
 	game.difficulty = diff
 	return game
