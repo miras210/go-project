@@ -22,7 +22,11 @@ func (b *BaseLoot) getValue() int {
 }
 
 func (b *BaseLoot) setNext(l Loot) {
-	b.next = l
+	if b.next != nil {
+		b.next.setNext(l)
+	} else {
+		b.next = l
+	}
 }
 
 type AttackArtifact struct {

@@ -45,6 +45,7 @@ func (g *Game) StartGame() string {
 		g.player.move(g.gameMap)
 		if g.gameMap[g.player.position.x][g.player.position.y] == 'E' {
 			eve := randomGen(0, 2)
+			eve = 1
 			if eve == 0 {
 				if !eventBattle(g.player, g.difficulty) {
 					g.running = false
