@@ -12,9 +12,23 @@ func main() {
 	_, _ = fmt.Scanln(&playerName)
 	fmt.Printf("Wow, that's beautiful name, my %v\n", playerName)
 	var difficulty string
-	fmt.Println("If you come here, do you wanna play hard with me ? Choose [easy, medium, hard]")
-	_, _ = fmt.Scanln(&difficulty)
-	myGame := g.NewGame(playerName, difficulty)
-	res := myGame.StartGame()
-	fmt.Println(res)
+	for {
+		fmt.Println("If you come here, do you wanna play hard with me ? Choose [easy, medium, hard]")
+		_, _ = fmt.Scanln(&difficulty)
+		myGame := g.NewGame(playerName, difficulty)
+		res := myGame.StartGame()
+		fmt.Println(res)
+		var ans string
+		fmt.Println("Wanna play again? [y/n]")
+		for {
+			_, _ = fmt.Scanln(&ans)
+			if ans == "y" || ans == "n" {
+				break
+			}
+		}
+		if ans == "n" {
+			fmt.Println("Goodbye!")
+			break
+		}
+	}
 }
