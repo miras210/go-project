@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	g "golang-project/game-package"
+	g "proj2/go-project/game-package"
 )
 
 func main() {

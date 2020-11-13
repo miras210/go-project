@@ -33,7 +33,9 @@ func (a *AttackAction) visitForEnemy(e CharacterI) {
 type LootAction struct{}
 
 func (l *LootAction) visitForPlayer(p CharacterI) {
-	panic("implement me")
+	pills, redbull := NewLoot()
+	p.SetHealth(p.GetHealth() + pills.addHealth)
+	p.SetStamina(p.GetStamina() + redbull.addStamina)
 }
 
 // TODO ENEMY CAN NOT LOOT

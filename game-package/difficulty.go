@@ -46,7 +46,9 @@ func (e *EasyDifficulty) getNewEnemies() []CharacterI {
 }
 
 func (e *EasyDifficulty) getNewLoots() []Loot {
-	panic("implement me")
+	var loots []Loot
+	loots = append(loots, NewLoot())
+	return loots
 }
 
 func (e *EasyDifficulty) getNewGameMap() *Map {
