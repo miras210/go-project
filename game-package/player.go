@@ -11,6 +11,11 @@ type Player struct {
 	position   *Coordinate
 }
 
+func (p *Player) String() string {
+	return fmt.Sprintf("%v HP: %v Attack: %v Defense: %v\n", p.playerName,
+		p.health, p.attack, p.defense)
+}
+
 func (c *Player) move(gmap [][]rune) bool {
 	if err := keyboard.Open(); err != nil {
 		panic(err)
@@ -58,10 +63,11 @@ func (c *Player) move(gmap [][]rune) bool {
 }
 
 func (c *Player) Attack(character CharacterI) {
-	fmt.Printf("Player %v attacks!\n", c.playerName)
+	fmt.Printf("Player %v attacks! ", c.playerName)
 	resultingDamage := c.attack - character.GetDefense()
 	if resultingDamage < 0 {
 		resultingDamage = 0
 	}
+	fmt.Printf("Dealt %v damage!\n", resultingDamage)
 	character.SetHealth(character.GetHealth() - resultingDamage)
 }

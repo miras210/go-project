@@ -17,6 +17,10 @@ type Character struct {
 	health, attack, defense int
 }
 
+func (c *Character) String() string {
+	return "Char"
+}
+
 func (c *Character) GetAttack() int {
 	return c.attack
 }
@@ -30,11 +34,11 @@ func (c *Character) SetHealth(health int) {
 	c.health = health
 }
 func (c *Character) Attack(character CharacterI) {
-	fmt.Println("Enemy attacks!")
 	resultingDamage := c.attack - character.GetDefense()
 	if resultingDamage < 0 {
 		resultingDamage = 0
 	}
+	fmt.Printf("Dealt %v damage!\n", resultingDamage)
 	character.SetHealth(character.GetHealth() - resultingDamage)
 }
 

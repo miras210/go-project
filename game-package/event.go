@@ -6,9 +6,11 @@ func eventBattle(player *Player, difficulty Difficulty) bool {
 	enemy := difficulty.getEnemy()
 	for player.isAlive() && enemy.isAlive() {
 		player.Attack(enemy)
+		fmt.Scanln()
 		if enemy.GetHealth() > 0 {
 			enemy.Attack(player)
 		}
+		fmt.Scanln()
 	}
 	var res bool
 	if player.isAlive() {

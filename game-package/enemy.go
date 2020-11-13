@@ -1,11 +1,18 @@
 package game_package
 
+import "fmt"
+
 type Enemy struct {
 	Character
 }
 
 type Zombie struct {
 	Enemy
+}
+
+func (z *Zombie) Attack(i CharacterI) {
+	fmt.Printf("%v attacks! ", z.String())
+	z.Character.Attack(i)
 }
 
 func NewZombie() *Zombie {
@@ -16,8 +23,21 @@ func NewZombie() *Zombie {
 	}}}
 }
 
+func (z *Zombie) String() string {
+	return fmt.Sprintf("Zombie")
+}
+
 type Swordsman struct {
 	Enemy
+}
+
+func (s *Swordsman) Attack(i CharacterI) {
+	fmt.Printf("%v attacks! ", s.String())
+	s.Character.Attack(i)
+}
+
+func (s *Swordsman) String() string {
+	return fmt.Sprintf("Swordsman")
 }
 
 func NewSwordsman() *Swordsman {
@@ -32,6 +52,13 @@ type Thief struct {
 	Enemy
 }
 
+func (t *Thief) Attack(i CharacterI) {
+	fmt.Printf("%v attacks! ", t.String())
+	t.Character.Attack(i)
+}
+func (t *Thief) String() string {
+	return fmt.Sprintf("Thief")
+}
 func NewThief() *Thief {
 	return &Thief{Enemy{Character{
 		health:  20,
