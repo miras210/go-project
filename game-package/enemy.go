@@ -24,7 +24,7 @@ func NewZombie() *Zombie {
 }
 
 func (z *Zombie) String() string {
-	return fmt.Sprintf("Zombie")
+	return fmt.Sprintf("Zombie %v", z.Character.String())
 }
 
 type Swordsman struct {
@@ -37,7 +37,7 @@ func (s *Swordsman) Attack(i CharacterI) {
 }
 
 func (s *Swordsman) String() string {
-	return fmt.Sprintf("Swordsman")
+	return fmt.Sprintf("Swordsman %v", s.Character.String())
 }
 
 func NewSwordsman() *Swordsman {
@@ -57,7 +57,7 @@ func (t *Thief) Attack(i CharacterI) {
 	t.Character.Attack(i)
 }
 func (t *Thief) String() string {
-	return fmt.Sprintf("Thief")
+	return fmt.Sprintf("Thief %v", t.Character.String())
 }
 func NewThief() *Thief {
 	return &Thief{Enemy{Character{

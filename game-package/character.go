@@ -18,7 +18,7 @@ type Character struct {
 }
 
 func (c *Character) String() string {
-	return "Char"
+	return fmt.Sprintf("[HP: %v ATK: %v DEF: %v]", c.health, c.attack, c.defense)
 }
 
 func (c *Character) GetAttack() int {

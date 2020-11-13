@@ -52,7 +52,7 @@ func (g *Game) StartGame() string {
 			} else {
 				eventLoot(g.player, g.difficulty)
 			}
-			g.gameMap[g.player.position.x][g.player.position.y] = '*'
+			g.gameMap[g.player.position.x][g.player.position.y] = ' '
 			g.eventCompletion++
 		}
 	}
