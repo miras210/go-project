@@ -5,34 +5,47 @@ package game_package
 type Difficulty interface {
 	getNewPlayer(string) *Player // Player struct
 	getNewEnemies() []CharacterI // []Enemy struct
-	getNewLoots() []Loot         // []Loot struct
-	getNewGameMap() *Map         // GameMap struct
+	// []Loot struct
+	getNewGameMap() [][]rune
+	getEnemy() CharacterI
+	getEventNumber() int // GameMap struct
 }
 
 func newDifficulty(difficulty string) Difficulty {
 	switch difficulty {
 	case "easy":
 		return &EasyDifficulty{}
-	case "medium":
+	/*case "medium":
 		return &MediumDifficulty{}
 	case "hard":
-		return &HardDifficulty{}
+		return &HardDifficulty{}*/
 	default:
-		return &MediumDifficulty{}
+		return &EasyDifficulty{}
 	}
 }
 
 type EasyDifficulty struct{}
 
+func (e *EasyDifficulty) getEventNumber() int {
+	return 8
+}
+
+func (e *EasyDifficulty) getEnemy() CharacterI {
+	return EnemyFactory(EnemyIdentifier(randomGen(0, 2)),
+		AbilityIdentifier(-1))
+}
+
 func (e *EasyDifficulty) getNewPlayer(playerName string) *Player {
 	return &Player{
 		Character: Character{
-			health:     100,
-			attack:     20,
-			defense:    10,
-			stamina:    4,
-			maxStamina: 4},
+			health:  100,
+			attack:  20,
+			defense: 10},
 		playerName: playerName,
+		position: &Coordinate{
+			x: 1,
+			y: 4,
+		},
 	}
 }
 
@@ -51,32 +64,23 @@ func (e *EasyDifficulty) getNewLoots() []Loot {
 	return loots
 }
 
-func (e *EasyDifficulty) getNewGameMap() *Map {
+func (e *EasyDifficulty) getNewGameMap() [][]rune {
 	myTerrainMap := [][]rune{
 		{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+		{'#', 'E', '#', '#', '*', '#', '*', '*', '*', '#'},
+		{'#', '*', '*', '*', '*', '#', '*', '#', '*', '#'},
+		{'#', 'E', '#', '#', '*', '*', '*', '#', 'E', '#'},
+		{'#', '#', '#', '#', '*', '#', '#', '#', '#', '#'},
+		{'#', '*', 'E', '#', '*', '#', '*', 'E', '*', '#'},
 		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
-		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
+		{'#', 'E', '*', '#', '*', '#', '*', '*', 'E', '#'},
+		{'#', '#', '#', '#', '#', '#', 'E', '*', '*', '#'},
 		{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
 	}
-
-	myGameMap := make([][]interface{}, 10)
-	for i := range myGameMap {
-		myGameMap[i] = make([]interface{}, 10)
-	}
-	myMap := Map{
-		gameMap:    myGameMap,
-		terrainMap: myTerrainMap,
-	}
-	return &myMap
+	return myTerrainMap
 }
 
-type MediumDifficulty struct{}
+/*type MediumDifficulty struct{}
 
 func (m *MediumDifficulty) getNewPlayer(playerName string) *Player {
 	return &Player{
@@ -100,9 +104,6 @@ func (m *MediumDifficulty) getNewEnemies() []CharacterI {
 	return enemies
 }
 
-func (m *MediumDifficulty) getNewLoots() []Loot {
-	panic("implement me")
-}
 
 func (m *MediumDifficulty) getNewGameMap() *Map {
 	myTerrainMap := [][]rune{
@@ -122,7 +123,6 @@ func (m *MediumDifficulty) getNewGameMap() *Map {
 		{'#', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '#'},
 		{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
 	}
-
 	myGameMap := make([][]interface{}, 10)
 	for i := range myGameMap {
 		myGameMap[i] = make([]interface{}, 10)
@@ -158,9 +158,7 @@ func (h *HardDifficulty) getNewEnemies() []CharacterI {
 	return enemies
 }
 
-func (h *HardDifficulty) getNewLoots() []Loot {
-	panic("implement me")
-}
+
 
 func (h *HardDifficulty) getNewGameMap() *Map {
 	myTerrainMap := [][]rune{
@@ -196,3 +194,4 @@ func (h *HardDifficulty) getNewGameMap() *Map {
 	}
 	return &myMap
 }
+*/

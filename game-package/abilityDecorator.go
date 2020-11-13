@@ -14,17 +14,14 @@ func (e *AbilityDecorator) GetDefense() int {
 func (e *AbilityDecorator) GetHealth() int {
 	return e.character.GetHealth()
 }
-func (e *AbilityDecorator) GetStamina() int {
-	return e.character.GetStamina()
-}
-func (e *AbilityDecorator) SetStamina(stamina int) {
-	e.character.SetStamina(stamina)
-}
-func (e *AbilityDecorator) GetMaxStamina() int {
-	return e.character.GetMaxStamina()
-}
 func (e *AbilityDecorator) SetHealth(health int) {
 	e.character.SetHealth(health)
+}
+func (e *AbilityDecorator) Attack(i CharacterI) {
+	e.character.Attack(i)
+}
+func (e *AbilityDecorator) isAlive() bool {
+	return e.character.isAlive()
 }
 
 //Decorators
@@ -42,12 +39,4 @@ type StoneDecorator struct {
 
 func (s *StoneDecorator) GetDefense() int {
 	return s.character.GetDefense() * 2
-}
-
-type EnduranceDecorator struct {
-	AbilityDecorator
-}
-
-func (e *EnduranceDecorator) GetMaxStamina() int {
-	return e.GetStamina() + 3
 }
