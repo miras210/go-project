@@ -12,7 +12,7 @@ type Player struct {
 }
 
 func (p *Player) String() string {
-	return fmt.Sprintf("%v HP: %v Attack: %v Defense: %v\n", p.playerName,
+	return fmt.Sprintf("%v [HP: %v ATK: %v DEF: %v]", p.playerName,
 		p.health, p.attack, p.defense)
 }
 
@@ -53,6 +53,8 @@ func (c *Player) move(gmap [][]rune) bool {
 			}
 			c.position.x += 1
 			break
+		} else if key == keyboard.KeyEnter {
+			break
 		}
 		if key == keyboard.KeyEsc {
 			return false
@@ -63,7 +65,7 @@ func (c *Player) move(gmap [][]rune) bool {
 }
 
 func (c *Player) Attack(character CharacterI) {
-	fmt.Printf("Player %v attacks! ", c.playerName)
+	fmt.Printf("Player %v attacks! ", c)
 	resultingDamage := c.attack - character.GetDefense()
 	if resultingDamage < 0 {
 		resultingDamage = 0
