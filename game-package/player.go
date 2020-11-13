@@ -7,13 +7,45 @@ import (
 
 type Player struct {
 	Character
-	playerName string
-	position   *Coordinate
+	playerName      string
+	position        *Coordinate
+	defenseArtifact Loot
+	attackArtifact  Loot
+}
+
+func (p *Player) addAttackArtifact(a Loot) {
+	if p.attackArtifact == nil {
+		p.attackArtifact = a
+	} else {
+		p.attackArtifact.setNext(a)
+	}
+}
+func (p *Player) addDefenseArtifact(d Loot) {
+	if p.defenseArtifact == nil {
+		p.defenseArtifact = d
+	} else {
+		p.defenseArtifact.setNext(d)
+	}
+}
+
+func (p *Player) GetAttack() int {
+	if p.attackArtifact != nil {
+		return p.attack + p.attackArtifact.getValue()
+	} else {
+		return p.attack
+	}
+}
+func (p *Player) GetDefense() int {
+	if p.defenseArtifact != nil {
+		return p.defense + p.defenseArtifact.getValue()
+	} else {
+		return p.defense
+	}
 }
 
 func (p *Player) String() string {
 	return fmt.Sprintf("%v [HP: %v ATK: %v DEF: %v]", p.playerName,
-		p.health, p.attack, p.defense)
+		p.health, p.GetAttack(), p.GetDefense())
 }
 
 func (c *Player) move(gmap [][]rune) bool {

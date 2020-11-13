@@ -3,35 +3,77 @@ package game_package
 type Loot interface {
 	getType() string
 	getValue() int
+	setNext(Loot)
+}
+type BaseLoot struct {
+	next Loot
 }
 
-type Pills struct {
-	name      string
-	addHealth int
+func (b *BaseLoot) getType() string {
+	return "base"
 }
 
-func (p *Pills) getType() string {
-	return p.name
+func (b *BaseLoot) getValue() int {
+	if b.next != nil {
+		return b.next.getValue()
+	} else {
+		return 0
+	}
 }
 
-func (p *Pills) getValue() int {
-	return p.addHealth
+func (b *BaseLoot) setNext(l Loot) {
+	b.next = l
 }
 
-type Redbull struct {
-	name       string
-	addStamina int
+type AttackArtifact struct {
+	BaseLoot
 }
 
-func (r *Redbull) getType() string {
-	return r.name
+func (a *AttackArtifact) getType() string {
+	return "attack"
 }
 
-func (r *Redbull) getValue() int {
-	return r.addStamina
+type DefenseArtifact struct {
+	BaseLoot
 }
-func NewLoot() (*Pills, *Redbull) {
-	return &Pills{addHealth: 5, name: "pills"}, &Redbull{addStamina: 5, name: "redbull"}
+
+func (d *DefenseArtifact) getType() string {
+	return "defense"
+}
+
+type Armor struct {
+	DefenseArtifact
+}
+
+func (a *Armor) getType() string {
+	return a.DefenseArtifact.getType()
+}
+
+func (a *Armor) getValue() int {
+	return 10 + a.BaseLoot.getValue()
+}
+
+type FlameRing struct {
+	AttackArtifact
+}
+
+func (f *FlameRing) getType() string {
+	return f.AttackArtifact.getType()
+}
+
+func (f *FlameRing) getValue() int {
+	return 10 + f.BaseLoot.getValue()
+}
+func NewLoot() Loot {
+	i := randomGen(0, 1)
+	switch i {
+	case 0:
+		return &Armor{}
+	case 1:
+		return &FlameRing{}
+	default:
+		return nil
+	}
 }
 
 //TODO Implement Loot that buffs Attack and Defense, that can sum with Chain of Responsibility

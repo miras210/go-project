@@ -4,6 +4,7 @@ package game_package
 
 type Difficulty interface {
 	getNewPlayer(string) *Player // Player struct
+	getNewEnemies() []CharacterI // []Enemy struct
 	// []Loot struct
 	getNewGameMap() [][]rune
 	getEnemy() CharacterI
@@ -55,6 +56,13 @@ func (e *EasyDifficulty) getNewEnemies() []CharacterI {
 			AbilityIdentifier(-1)))
 	}
 	return enemies
+}
+
+func (e *EasyDifficulty) getNewLoots() []Loot {
+	panic("")
+	//var loots []Loot
+	//loots = append(loots, NewLoot())
+	//return loots
 }
 
 func (e *EasyDifficulty) getNewGameMap() [][]rune {
