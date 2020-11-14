@@ -39,12 +39,13 @@ func (g *Game) StartGame() string {
 	for g.player.isAlive() || g.isRunning() {
 		if g.eventCompletion >= g.difficulty.getEventNumber() {
 			g.running = false
-			continue
+			break
 		}
 		g.display()
 		g.player.move(g.gameMap)
 		if g.gameMap[g.player.position.x][g.player.position.y] == 'E' {
 			eve := randomGen(0, 1)
+			eve = 1
 			if eve == 0 {
 				if !eventBattle(g.player, g.difficulty) {
 					g.running = false
