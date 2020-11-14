@@ -2,7 +2,7 @@ package game_package
 
 import "fmt"
 
-//AbilityDecorator
+//AbilityDecorator WRAPPER/DECORATOR PATTERN
 type AbilityDecorator struct {
 	character CharacterI
 }

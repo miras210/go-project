@@ -34,10 +34,11 @@ func (c *Character) SetHealth(health int) {
 	c.health = health
 }
 func (c *Character) Attack(character CharacterI) {
-	resultingDamage := c.attack - character.GetDefense()
-	if resultingDamage < 0 {
-		resultingDamage = 0
+	coeff := float64(c.GetAttack()) / float64(character.GetDefense())
+	if coeff > 1 {
+		coeff = 1
 	}
+	resultingDamage := int(float64(c.GetAttack()) * coeff)
 	fmt.Printf("Dealt %v damage!\n", resultingDamage)
 	character.SetHealth(character.GetHealth() - resultingDamage)
 }

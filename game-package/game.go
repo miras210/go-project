@@ -9,13 +9,13 @@ import (
 
 type Game struct {
 	difficulty      Difficulty
-	player          *Player //Player 	//[]Display
+	player          *Player
 	gameMap         [][]rune
 	eventCompletion int
-	running         bool //GameMap
-	//directAccess to the coordinates of object (for movement, attack)
+	running         bool
 }
 
+//FACADE PATTERN
 // The only two Public functions are below
 // ***************************************
 func NewGame(playerName, difficulty string) *Game {
@@ -44,9 +44,8 @@ func (g *Game) StartGame() string {
 		g.display()
 		g.player.move(g.gameMap)
 		if g.gameMap[g.player.position.x][g.player.position.y] == 'E' {
-			eve := randomGen(0, 1)
-			eve = 1
-			if eve == 0 {
+			eve := randomGen(0, 100)
+			if eve > 0 && eve <= 50 {
 				if !eventBattle(g.player, g.difficulty) {
 					g.running = false
 				}
@@ -58,9 +57,9 @@ func (g *Game) StartGame() string {
 		}
 	}
 	if g.player.isAlive() {
-		return "win"
+		return "Congratulations! You are now the master of the Dungeon!"
 	} else {
-		return "lose"
+		return "Pathetic fool. You dare to come to my dungeon and now YOUR SOUL IS MINE!"
 	}
 }
 func (g *Game) display() {

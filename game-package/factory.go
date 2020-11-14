@@ -16,6 +16,7 @@ const (
 	EnduranceGen
 )
 
+//FACTORY PATTERN
 func EnemyFactory(enemyType EnemyIdentifier, indexDecorator AbilityIdentifier) CharacterI {
 	var enemy CharacterI
 	switch enemyType {

@@ -1,13 +1,12 @@
 package game_package
 
-// DIFFICULTY STRATEGY
+// DIFFICULTY STRATEGY PATTERN
 
 type Difficulty interface {
 	getNewPlayer(string) *Player // Player struct
-	// []Loot struct
 	getNewGameMap() [][]rune
 	getEnemy() CharacterI
-	getEventNumber() int // GameMap struct
+	getEventNumber() int
 }
 
 func newDifficulty(difficulty string) Difficulty {
@@ -16,8 +15,8 @@ func newDifficulty(difficulty string) Difficulty {
 		return &EasyDifficulty{}
 	case "medium":
 		return &MediumDifficulty{}
-	/*case "hard":
-	return &HardDifficulty{}*/
+	case "hard":
+		return &HardDifficulty{}
 	default:
 		return &EasyDifficulty{}
 	}
@@ -83,9 +82,9 @@ func (m *MediumDifficulty) getEnemy() CharacterI {
 func (m *MediumDifficulty) getNewPlayer(playerName string) *Player {
 	return &Player{
 		Character: Character{
-			health:  100,
-			attack:  30,
-			defense: 25,
+			health:  80,
+			attack:  25,
+			defense: 10,
 		},
 		playerName: playerName,
 		position:   &Coordinate{1, 7},
@@ -123,66 +122,65 @@ func (m *MediumDifficulty) getNewGameMap() [][]rune {
 		{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
 	}
 	return myTerrainMap
-} /*
+}
 
 type HardDifficulty struct{}
+
+func (m *HardDifficulty) getEventNumber() int {
+	return 27
+}
 
 func (h *HardDifficulty) getNewPlayer(playerName string) *Player {
 	return &Player{
 		Character: Character{
-			health:     80,
-			attack:     10,
-			defense:    5,
-			stamina:    3,
-			maxStamina: 3,
+			health:  80,
+			attack:  10,
+			defense: 5,
 		},
 		playerName: playerName,
+		position: &Coordinate{
+			x: 3,
+			y: 8,
+		},
 	}
+}
+
+func (h *HardDifficulty) getEnemy() CharacterI {
+	return EnemyFactory(EnemyIdentifier(randomGen(0, 2)),
+		AbilityIdentifier(randomGen(0, 1)))
 }
 
 func (h *HardDifficulty) getNewEnemies() []CharacterI {
 	var enemies []CharacterI
 	for i := 0; i < 8; i++ {
 		enemies = append(enemies, EnemyFactory(EnemyIdentifier(randomGen(0, 2)),
-			AbilityIdentifier(randomGen(0, 2))))
+			AbilityIdentifier(randomGen(0, 1))))
 	}
 	return enemies
 }
 
-
-
-func (h *HardDifficulty) getNewGameMap() *Map {
+func (h *HardDifficulty) getNewGameMap() [][]rune {
 	myTerrainMap := [][]rune{
 		{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+		{'#', '#', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', 'E', ' ', ' ', ' ', 'E', ' ', '#', '#'},
+		{'#', ' ', '#', ' ', ' ', ' ', 'E', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#', 'E', '#'},
+		{'#', ' ', ' ', '#', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', '#', '#', ' ', ' ', '#'},
+		{'#', ' ', ' ', ' ', 'E', '#', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', '#'},
+		{'#', 'E', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', '#', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#'},
+		{'#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', '#', ' ', '#', ' ', ' ', ' ', ' ', '#', '#'},
+		{'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', ' ', ' ', ' ', ' ', 'E', ' ', 'E', '#', ' ', '#'},
+		{'#', ' ', '#', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', 'E', '#', ' ', ' ', ' ', '#', ' ', '#'},
+		{'#', 'E', '#', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', '#', ' ', '#'},
+		{'#', ' ', '#', ' ', 'E', ' ', '#', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#'},
+		{'#', '#', ' ', ' ', '#', '#', 'E', ' ', ' ', '#', '#', ' ', '#', ' ', '#', '#', ' ', '#', ' ', '#'},
+		{'#', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', 'E', '#'},
+		{'#', 'E', ' ', '#', ' ', ' ', ' ', 'E', ' ', '#', 'E', ' ', ' ', ' ', ' ', 'E', '#', ' ', ' ', '#'},
+		{'#', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', 'E', ' ', ' ', '#', ' ', ' ', '#'},
+		{'#', ' ', '#', ' ', ' ', 'E', ' ', ' ', ' ', 'E', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#'},
+		{'#', '#', ' ', ' ', ' ', ' ', ' ', 'E', ' ', ' ', '#', ' ', 'E', ' ', ' ', 'E', ' ', ' ', '#', '#'},
+		{'#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#'},
+		{'#', '#', ' ', 'E', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', 'E', '#', '#'},
 		{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
 	}
-
-	myGameMap := make([][]interface{}, 10)
-	for i := range myGameMap {
-		myGameMap[i] = make([]interface{}, 10)
-	}
-	myMap := Map{
-		gameMap:    myGameMap,
-		terrainMap: myTerrainMap,
-	}
-	return &myMap
+	return myTerrainMap
 }
-*/
