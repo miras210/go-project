@@ -1,19 +1,24 @@
 package game_package
 
+import "fmt"
+
 //CharacterI
 type CharacterI interface {
 	GetAttack() int
 	GetDefense() int
-	GetStamina() int
-	SetStamina(int)
-	GetMaxStamina() int
 	GetHealth() int
 	SetHealth(int)
+	Attack(i CharacterI)
+	isAlive() bool
 }
 
 //Character
 type Character struct {
-	health, attack, defense, stamina, maxStamina int
+	health, attack, defense int
+}
+
+func (c *Character) String() string {
+	return fmt.Sprintf("[HP: %v ATK: %v DEF: %v]", c.health, c.attack, c.defense)
 }
 
 func (c *Character) GetAttack() int {
@@ -22,18 +27,26 @@ func (c *Character) GetAttack() int {
 func (c *Character) GetDefense() int {
 	return c.defense
 }
-func (c *Character) GetStamina() int {
-	return c.stamina
-}
-func (c *Character) SetStamina(stamina int) {
-	c.stamina = stamina
-}
-func (c *Character) GetMaxStamina() int {
-	return c.maxStamina
-}
 func (c *Character) GetHealth() int {
 	return c.health
 }
 func (c *Character) SetHealth(health int) {
 	c.health = health
+}
+func (c *Character) Attack(character CharacterI) {
+	coeff := float64(c.GetAttack()) / float64(character.GetDefense())
+	if coeff > 1 {
+		coeff = 1
+	}
+	resultingDamage := int(float64(c.GetAttack()) * coeff)
+	fmt.Printf("Dealt %v damage!\n", resultingDamage)
+	character.SetHealth(character.GetHealth() - resultingDamage)
+}
+
+func (c *Character) isAlive() bool {
+	if c.GetHealth() > 0 {
+		return true
+	} else {
+		return false
+	}
 }

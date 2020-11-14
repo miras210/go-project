@@ -16,6 +16,7 @@ const (
 	EnduranceGen
 )
 
+//FACTORY PATTERN
 func EnemyFactory(enemyType EnemyIdentifier, indexDecorator AbilityIdentifier) CharacterI {
 	var enemy CharacterI
 	switch enemyType {
@@ -33,8 +34,6 @@ func EnemyFactory(enemyType EnemyIdentifier, indexDecorator AbilityIdentifier) C
 		enemy = &SharpDecorator{AbilityDecorator{character: enemy}}
 	case StoneGen:
 		enemy = &StoneDecorator{AbilityDecorator{character: enemy}}
-	case EnduranceGen:
-		enemy = &EnduranceDecorator{AbilityDecorator{character: enemy}}
 	}
 	return enemy
 }

@@ -1,15 +1,21 @@
 package game_package
 
+import (
+	"fmt"
+	"os"
+	"os/exec"
+	"runtime"
+)
+
 type Game struct {
-	difficulty  Difficulty
-	player      *Player                     //Player
-	enemies     []CharacterI                //[]Enemy
-	loots       []Loot                      //[]Loot
-	display     Display                     //[]Display
-	gameMap     *Map                        //GameMap
-	coordinates map[interface{}]*Coordinate //directAccess to the coordinates of object (for movement, attack)
+	difficulty      Difficulty
+	player          *Player
+	gameMap         [][]rune
+	eventCompletion int
+	running         bool
 }
 
+//FACADE PATTERN
 // The only two Public functions are below
 // ***************************************
 func NewGame(playerName, difficulty string) *Game {
@@ -18,56 +24,80 @@ func NewGame(playerName, difficulty string) *Game {
 	diff := newDifficulty(difficulty)
 	game.gameMap = diff.getNewGameMap()
 	game.player = diff.getNewPlayer(playerName)
-	game.gameMap.setPlayer(*game.player)
-	game.enemies = diff.getNewEnemies()
-	game.gameMap.setEnemies(game.enemies)
-	game.loots = diff.getNewLoots()
-	game.gameMap.setLoots(game.loots)
 	//TODO insertion of the objects to the gameMap and coordinates
 	game.difficulty = diff
+	game.running = true
+	game.eventCompletion = 0
 	return game
 }
 
+func (g *Game) isRunning() bool {
+	return g.running
+}
+
 func (g *Game) StartGame() string {
-	move, attack, loot := &MoveAction{}, &AttackAction{}, &LootAction{}
-	var result string
-	for {
-		var input string = "" //TODO implement get Input
-		var isValid bool = true
-		switch input {
-		case "move":
-			move.visitForPlayer(g.player)
-		case "attack":
-			attack.visitForPlayer(g.player)
-		case "loot":
-			loot.visitForPlayer(g.player)
-		case "skip":
-			g.player.SetStamina(0)
-		default:
-			isValid = false
-		}
-		if !isValid {
+	for g.player.isAlive() || g.isRunning() {
+		if g.eventCompletion >= g.difficulty.getEventNumber() {
+			g.running = false
 			break
 		}
-		if g.player.GetStamina() > 0 {
-			break
-		}
-		//enemy take turn
-		for _, enemy := range g.enemies {
-			attack.visitForEnemy(enemy)
-			move.visitForEnemy(enemy)
-		}
-		g.player.SetStamina(g.player.GetMaxStamina())
-		if g.player.GetHealth() <= 0 {
-			result = "lose"
-			break
-		}
-		if len(g.enemies) == 0 {
-			result = "win"
-			break
+		g.display()
+		g.player.move(g.gameMap)
+		if g.gameMap[g.player.position.x][g.player.position.y] == 'E' {
+			eve := randomGen(0, 100)
+			if eve > 0 && eve <= 50 {
+				if !eventBattle(g.player, g.difficulty) {
+					g.running = false
+				}
+			} else {
+				eventLoot(g.player, g.difficulty)
+			}
+			g.gameMap[g.player.position.x][g.player.position.y] = ' '
+			g.eventCompletion++
 		}
 	}
-	return result
+	if g.player.isAlive() {
+		return "Congratulations! You are now the master of the Dungeon!"
+	} else {
+		return "Pathetic fool. You dare to come to my dungeon and now YOUR SOUL IS MINE!"
+	}
+}
+func (g *Game) display() {
+	//TODO clear the previous screen
+
+	// WORKS ONLY IN TERMINALS BASH / CMD / .exe file
+	// Clearing the console
+	clear := make(map[string]func()) //Initialize it
+	clear["linux"] = func() {
+		cmd := exec.Command("clear") //Linux example, its tested
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+	clear["windows"] = func() {
+		cmd := exec.Command("cmd", "/c", "cls") //Windows example, its tested
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+
+	value, ok := clear[runtime.GOOS]
+
+	if ok {
+		value()
+	}
+	x, y := g.player.position.getCoordinates()
+	//TODO Miras, fix rendering here, please
+	for a, row := range g.gameMap {
+		for b, cell := range row {
+			if a == x && b == y {
+				fmt.Print(string('P'))
+			} else {
+				fmt.Print(string(cell))
+			}
+		}
+		fmt.Println()
+	}
+	fmt.Println(g.player)
+
 }
 
 // ***************************************

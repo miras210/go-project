@@ -22,15 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06972248-85c2-4192-ad0a-590c11dad603" name="Default Changelist" comment="changed: decorators concept&#10;modified: difficulty.go, character.go">
-      <change afterPath="$PROJECT_DIR$/game-package/display.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game-package/difficulty.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/difficulty.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game-package/enemy.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/enemy.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game-package/game.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/game.go" afterDir="false" />
+    <list default="true" id="06972248-85c2-4192-ad0a-590c11dad603" name="Default Changelist" comment="build: last stable version">
+      <change beforePath="$PROJECT_DIR$/game-package/display.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/game-package/map.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/map.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game-package/randomInt.go" beforeDir="false" afterPath="$PROJECT_DIR$/game-package/randomInt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +66,7 @@
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../assignment5/chain.go" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -118,40 +112,92 @@
     <MESSAGE value="modified: game.go, character.go, elementalDecorator.go, action.go" />
     <MESSAGE value="modified: game.go, difficulty.go" />
     <MESSAGE value="changed: decorators concept&#10;modified: difficulty.go, character.go" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed: decorators concept&#10;modified: difficulty.go, character.go" />
+    <MESSAGE value="added: randomInt.go, player.go, factory.go, enemy.go, map.go&#10;modified: abilityDecorator.go, action.go, character.go, difficulty.go, game.go" />
+    <MESSAGE value="fixed all game" />
+    <MESSAGE value="modified: fmt display" />
+    <MESSAGE value="added: run.bat" />
+    <MESSAGE value="added: run files" />
+    <MESSAGE value="build: stable version" />
+    <MESSAGE value="fixed: enter key bug" />
+    <MESSAGE value="fixed: no win bug" />
+    <MESSAGE value="build: last stable version" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: last stable version" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605015693911">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605015693911" />
-    <state x="548" y="179" key="FileChooserDialogImpl" timestamp="1605115179733">
+    <state x="548" y="179" key="FileChooserDialogImpl" timestamp="1605293542145">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="179" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605115179733" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1605126267392">
+    <state x="548" y="179" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605293542145" />
+    <state width="1493" height="442" key="GridCell.Tab.0.bottom" timestamp="1605294341892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605126267392" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1605126267391">
+    <state width="1493" height="442" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.0.center" timestamp="1605294341892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605126267391" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1605126267391">
+    <state width="1493" height="442" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.0.left" timestamp="1605294341892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605126267391" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1605126267391">
+    <state width="1493" height="442" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.0.right" timestamp="1605294341892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605126267391" />
+    <state width="1493" height="442" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.1.bottom" timestamp="1605294341892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="442" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.1.center" timestamp="1605294341892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="442" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.1.left" timestamp="1605294341892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="442" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state width="1493" height="442" key="GridCell.Tab.1.right" timestamp="1605294341892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="442" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605294341892" />
+    <state x="147" y="65" key="MergeDialog" timestamp="1605329898128">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1605329898128" />
+    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1605329900155">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1605329900155" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1605015656962">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605015656962" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605112190983">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605333678762">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605112190983" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605333678762" />
+    <state x="557" y="125" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605253298084">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="557" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1605253298084" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605283864670">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605283864670" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/game-package/player.go</url>
+          <line>51</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
