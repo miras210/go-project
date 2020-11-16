@@ -97,7 +97,7 @@ func (c *Player) move(gmap [][]rune) bool {
 }
 
 func (c *Player) Attack(character CharacterI) {
-	fmt.Printf("Player %v attacks! ", c)
+	fmt.Printf("Player %v attacks %v! ", c, character)
 	coeff := float64(c.GetAttack()) / float64(character.GetDefense())
 	if coeff > 1 {
 		coeff = 1

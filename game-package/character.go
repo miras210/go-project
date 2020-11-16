@@ -39,7 +39,7 @@ func (c *Character) Attack(character CharacterI) {
 		coeff = 1
 	}
 	resultingDamage := int(float64(c.GetAttack()) * coeff)
-	fmt.Printf("Dealt %v damage!\n", resultingDamage)
+	fmt.Printf("Dealt %v damage to %v!\n", resultingDamage, character)
 	character.SetHealth(character.GetHealth() - resultingDamage)
 }
 
